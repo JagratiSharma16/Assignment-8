@@ -1,0 +1,155 @@
+body {
+    background: linear-gradient(rgb(199, 174, 174), rgba(0, 0, 0, 0.0)),url(wood4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h2 {
+    font-size: 50px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px 30px 30px 30px;
+}
+
+.form {
+    margin-top: 80px;
+    border: 9px solid #958aaa;
+    padding: 7px 70px 20px 70px;
+    background-color: #f2ddb0d3;
+    border-radius: 90px;
+
+
+}
+
+h1 {
+    text-decoration: underline;
+}
+
+.common>label {
+    color: rgb(6, 105, 107);
+}
+
+.common {
+    color: #a22837;
+    border: 4px solid #047593;
+    font-size: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 30px;
+    position: relative;
+}
+#last{
+    border: none;
+    padding-bottom: 20px;
+}
+.terms {
+    color:#a22837;
+    font-size: 20px;
+    border: 4px solid #047593;
+}
+
+.terms>label {
+    color: rgb(44, 28, 221);
+    font-size: 20px;
+    
+    font-style: italic;
+    font-weight: 1000;
+
+}
+.common input{
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 4px;
+    background-color: rgba(164, 100, 100, 0.571);
+}
+
+.common.success input {
+    border-color: #2ecc71;
+}
+
+.common.error input {
+    border-color: #e74c3c;
+}
+
+.common i {
+    position: absolute;
+    visibility: hidden;
+    
+}
+
+.terms i {
+    position: absolute;
+    visibility: hidden;
+}
+
+
+.common small {
+    color: #e74c3c;
+    position: absolute;
+
+    
+    visibility: hidden;
+}
+
+.common.error small {
+    visibility: visible;
+    
+    margin-left: 100px;
+}
+
+.terms small {
+    color: #e74c3c;
+    position: absolute;
+
+    
+    visibility: hidden;
+}
+
+.terms.error small {
+    visibility: visible;
+}
+
+.common.error i.fa-circle-exclamation {
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.terms.error i.fa-circle-exclamation {
+    color: #e74c3c;
+    visibility: visible;
+}
+.common.success i.fa-circle-check {
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.terms.success i.fa-circle-check {
+    color: #2ecc71;
+    visibility: visible;
+}
+
+
+.submit {
+    display: block;
+    outline: none;
+    width: 200px;
+    font-size: 20px;
+    padding: 9px;
+    font-weight: 700;
+    color: rgb(6, 6, 6);
+    background-color: #958aaa;
+    border-radius: 10px;
+    transition: all 1s ease;
+}
+
+.con {
+    width: 800px;
+}

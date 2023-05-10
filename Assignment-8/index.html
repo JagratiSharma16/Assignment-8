@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <main>
+        <form action="" id="form" onsubmit="return validate()">
+            <div class="form">
+                <h1>
+                    <center> Registration Form</center>
+                </h1>
+                <div>
+                    <fieldset class="common" id="name">
+                        <legend>Name Section:</legend>
+                        <label for="fn">First Name:</label>
+                        <input type="text" name="first_name" id="fn">
+                        <i class="fa-solid fa-circle-check " style="color: #11df74;"></i>
+                        <i class="fa-solid fa-circle-exclamation " style="color: #e70d0d;"></i>
+                        <br><small>Error msg</small>
+                        <br>
+                        <br>
+                        <div class="common" id="last">
+                            <label for="ln">Last Name:</label>
+                            <input type="text" name="last_name" id="ln">
+                            <i class="fa-solid fa-circle-check " style="color: #11df74;"></i>
+                            <i class="fa-solid fa-circle-exclamation " style="color: #e70d0d;"></i>
+                            <br><small>Error msg</small>
+                        </div>
+                    </fieldset>
+                </div>
+                <br>
+                <div>
+                    <fieldset class="common">
+                        <legend>Phone Number section:</legend>
+                        <label for="mob">Phone Number:</label>
+                        <input type="number" name="phone_number" id="mob">
+                        <i class="fa-solid fa-circle-check " style="color: #11df74;"></i>
+                        <i class="fa-solid fa-circle-exclamation " style="color: #e70d0d;"></i>
+                        <br><small>Error msg</small>
+                    </fieldset>
+                </div>
+                <br>
+                <div>
+                    <fieldset class="common">
+                        <legend>Email section:</legend>
+                        <label for="mail">Email:</label>
+                        <input type="email" name="email" id="email">
+                        <i class="fa-solid fa-circle-check " style="color: #11df74;"></i>
+                        <i class="fa-solid fa-circle-exclamation " style="color: #e70d0d;"></i>
+                        <br><small>Error msg</small>
+                    </fieldset>
+                </div>
+                <br>
+                <div>
+                    <fieldset class="common">
+                        <legend>Password section:</legend>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password">
+                        <i class="fa-solid fa-circle-check " style="color: #11df74;"></i>
+                        <i class="fa-solid fa-circle-exclamation " style="color: #e70d0d;"></i>
+                        <br><small>Error msg</small>
+                    </fieldset>
+                </div>
+                <br>
+                <div>
+                    <fieldset class="terms">
+                        <legend>Terms and Conditions:</legend>
+                        <label for="terms">I agree to the given terms and conditions.</label>
+                        <input type="checkbox" name="terms" id="terms" required>
+                        <i class="fa-solid fa-circle-check " style="color: #11df74;"></i>
+                        <i class="fa-solid fa-circle-exclamation " style="color: #e70d0d;"></i>
+                        <br><small>Error msg</small>
+                    </fieldset>
+                </div>
+                <br>
+                <center><input type="submit" class="submit" value="submit"></center></div>
+        </form>
+        <!-- <div>
+            <img src="computer.png" class="con">
+        </div> -->
+    </main>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        const form = document.getElementById('form');
+        const first_name = document.getElementById('fn');
+        const last_name = document.getElementById('ln');
+        const phone_number = document.getElementById('mob');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+
+        //add event
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+
+        });
+        const sendData = (first_nameVal, sRate, count) => {
+            if (sRate == count) {
+                alert("Registration Successfull");
+                swal("Welcome! "+ first_nameVal, "Registration Successful", "success");
+            }
+        }
+
+        //for final data validation
+        const SuccessMsg = (first_nameVal) => {
+            let common = document.getElementsByClassName('common');
+            var count = common.length - 1;
+            for (var i = 0; i < common.length; i++) {
+                if (common[i].className == "common success") {
+                    var sRate = 0 + i;
+                    console.log(sRate);
+                    sendData(first_nameVal, sRate, count);
+
+                } else {
+                    return false
+                }
+
+            }
+
+        }
+        //more email validate
+        const isEmail = (emailVal) => {
+            var atSymbol = emailVal.indexOf("@");
+            if (atSymbol < 1) return false;
+            var dot = emailVal.lastIndexOf('.');
+            if (dot <= atSymbol + 2) return false;
+            if (dot === emailVal.length - 1) return false;//tha@p.a = 7-1 6 3 5
+            return true;
+        }
+
+        //define the validate function
+        const validate = () => {
+            const first_nameVal = fn.value.trim();
+            const last_nameVal = ln.value.trim();
+            const phone_numberVal = mob.value.trim();
+            const emailVal = email.value.trim();
+            const passwordVal = password.value.trim();
+            const termsVal = terms.value.trim();
+            // validate fn ln
+            if (first_nameVal == "") {
+                setErrorMsg(fn, 'First name cannot be blank');
+            } else if (first_nameVal.length <= 2) {
+                setErrorMsg(fn, 'Firstname should have min 3 char');
+            } else {
+                setSuccessMsg(fn);
+            }
+            //validate fn ln
+            if (last_nameVal == "") {
+                setErrorMsg(ln, 'Last name cannot be blank');
+            } else if (last_nameVal.length <= 2) {
+                setErrorMsg(ln, 'Lastname should have min 3 char');
+            } else if (last_nameVal == first_nameVal) {
+                setErrorMsg(ln, 'FirstName and LastName should not be same');
+            } else {
+                setSuccessMsg(ln);
+            }
+            //validate phone
+            if (phone_numberVal == "") {
+                setErrorMsg(phone_number, 'Phone number cannot be blank');
+            } else if (phone_numberVal.length != 10) {
+                setErrorMsg(phone_number, 'Not a valid Phone number');
+            } else {
+                setSuccessMsg(phone_number);
+            }
+            //validate email
+            if (emailVal == "") {
+                setErrorMsg(email, 'Email cannot be blank');
+            } else if (!isEmail(emailVal)) {
+                setErrorMsg(email, 'Not a valid Email');
+            } else {
+                setSuccessMsg(email);
+            }
+            //validate password
+            if (passwordVal == "") {
+                setErrorMsg(password, 'Password cannot be blank');
+            } else if (passwordVal.length <= 7) {
+                setErrorMsg(password, 'Minimum length should be 8 char');
+            } else {
+                setSuccessMsg(password);
+            }
+        
+        SuccessMsg(first_nameVal);
+
+
+        }
+
+        function setErrorMsg(input, errormsgs) {
+            const common = input.parentElement;
+            const small = common.querySelector('small');
+            common.className = "common error";
+            small.innerText = errormsgs;
+        }
+        function setSuccessMsg(input) {
+            const common = input.parentElement;
+            common.className = "common success";
+        }
+
+    </script>
+</body>
+
+</html>
